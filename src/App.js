@@ -1,11 +1,10 @@
 import React from "react";
+import CustomSelect from "./components/DropDown/CustomSelect";
 
-const App =() =>{
-  return (
-    <div>
-      Happy Hacking!
-    </div>
-  );
+const App = () => {
+    return (
+        <CustomSelect/>
+    );
 }
 
 export default App;
