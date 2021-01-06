@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 
-const Main = styled("div")`
-  font-family: sans-serif;
-  background: #f0f0f0;
-  height: 100vh;
-`;
+// const Main = styled("div")`
+//   font-family: sans-serif;
+//   background: #f0f0f0;
+//   height: 100vh;
+// `;
 
 const DropDownContainer = styled("div")`
   width: 10.5em;
@@ -78,7 +78,6 @@ const CustomSelect = () => {
     };
 
     return (
-        <Main>
             <DropDownContainer>
                 <DropDownHeader isOpen={isOpen}  onClick={toggling}>
                     {selectedOption}
@@ -95,7 +94,6 @@ const CustomSelect = () => {
                     </DropDownListContainer>
                 )}
             </DropDownContainer>
-        </Main>
     );
 }
 
