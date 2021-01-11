@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
 import styled from "styled-components";
 
 
@@ -9,34 +9,36 @@ import styled from "styled-components";
 // `;
 
 const DropDownContainer = styled("div")`
-  width: 10.5em;
-  margin: 0 auto;
+  width: 55px;
+  text-align: left;
+  margin-right: 20px;
+  font-family: 'Open Sans', sans-serif;
 `;
 
 const DropDownHeader = styled("div")`
-  margin-bottom: 0.8em;
-  padding: 0.4em 1em 0.4em 1em;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-  font-weight: 500;
-  font-size: 1.3rem;
-  color: #3faffa;
-  background: #ffffff;
-  text-align: center;
+  font-weight: 700;
+  background: transparent;
   position: relative;
+  font-size: 12px;
+  padding-left: 5px;
+  cursor: pointer;
+
   :before, :after {
-  content: '';
-  width: 2px;
-  height: 15px;
-  top: 15px;
-  right: 30px;
-  background: black;
-  position: absolute;
+    content: '';
+    width: 2px;
+    height: 7px;
+    top: 5px;
+    right: 10px;
+    background: white;
+    position: absolute;
   }
+
   :before {
     transform: ${(props) => props.isOpen ? `rotate(45deg)` : ` rotate(-45deg) `}
   }
+
   :after {
-    right: 20.5px;
+    right: 6px;
     transform: ${(props) => props.isOpen ? `rotate(-45deg)` : ` rotate(45deg) `}
   }
 `;
@@ -44,57 +46,125 @@ const DropDownHeader = styled("div")`
 const DropDownListContainer = styled("div")``;
 
 const DropDownList = styled("ul")`
-  padding: 0;
-  margin: 0;
-  padding-left: 1em;
-  background: #ffffff;
-  border: 2px solid #e5e5e5;
-  box-sizing: border-box;
-  color: #3faffa;
-  font-size: 1.3rem;
-  font-weight: 500;
-  &:first-child {
-    padding-top: 0.8em;
+  position: absolute;
+  z-index: 20;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+
+  li {
+    padding: 5px 20px 5px 5px;
+
+    &:hover {
+      color: #FFB548;
+      transition: .2s ease-in-out;
+    }
   }
 `;
 
 const ListItem = styled("li")`
   list-style: none;
-  margin-bottom: 0.8em;
+  //margin-bottom: 0.8em;
 `;
 
-const options = ["ENG", "RUS", "FRA", "DEU"];
 
-const CustomSelect = () => {
+const CustomSelect = React.memo(() => {
+    const options = ["ENG", "RUS", "FRA", "DEU"];
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(options[0]);
 
     const toggling = () => setIsOpen(!isOpen);
 
-    const onOptionClicked = value => () => {
-        setSelectedOption(value);
-        setIsOpen(false);
-        console.log(selectedOption);
+    const onOptionClicked = (value) => {
+        return () => {
+            setSelectedOption(value);
+            setIsOpen(false);
+            console.log(selectedOption);
+        }
     };
 
     return (
-            <DropDownContainer>
-                <DropDownHeader isOpen={isOpen}  onClick={toggling}>
-                    {selectedOption}
-                </DropDownHeader>
-                {isOpen && (
-                    <DropDownListContainer>
-                        <DropDownList>
-                            {options.filter(o => o !== selectedOption).map(option => (
-                                <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                                    {option}
-                                </ListItem>
-                            ))}
-                        </DropDownList>
-                    </DropDownListContainer>
-                )}
-            </DropDownContainer>
+        <DropDownContainer>
+            <DropDownHeader isOpen={isOpen} onClick={toggling}>
+                {selectedOption}
+            </DropDownHeader>
+            {isOpen && (
+                <DropDownListContainer>
+                    <DropDownList>
+                        {options.filter(o => o !== selectedOption).map(option => (
+                            <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+                                {option}
+                            </ListItem>
+                        ))}
+                    </DropDownList>
+                </DropDownListContainer>
+            )}
+        </DropDownContainer>
     );
-}
+})
 
 export default CustomSelect;
+
+//
+// const DropDownContainer = styled("div")`
+//   width: 55px;
+//   text-align: left;
+//   //margin: 0 auto;
+// `;
+//
+// const DropDownHeader = styled("div")`
+//   //margin-bottom: 0.8em;
+//   //padding: 0.4em 1em 0.4em 1em;
+//   font-weight: 500;
+//   //font-size: 1.3rem;
+//   background: transparent;
+//   position: relative;
+//   font-size: 12px;
+//
+//   :before, :after {
+//     content: '';
+//     width: 2px;
+//     height: 7px;
+//     top: 5px;
+//     right: 15px;
+//     background: white;
+//     position: absolute;
+//   }
+//
+//   :before {
+//     transform: ${(props) => props.isOpen ? `rotate(45deg)` : ` rotate(-45deg) `}
+//   }
+//
+//   :after {
+//     right: 11px;
+//     transform: ${(props) => props.isOpen ? `rotate(-45deg)` : ` rotate(45deg) `}
+//   }
+// `;
+//
+// const DropDownListContainer = styled("div")``;
+//
+// const DropDownList = styled("ul")`
+//   position: absolute;
+//   z-index: 20;
+//   margin: 10px;
+//   //padding-left: 1em;
+//   background: black;
+//   //border: 2px solid #e5e5e5;
+//   //box-sizing: border-box;
+//   //color: #3faffa;
+//   font-size: 12px;
+//   padding-left: 5px;
+//   font-weight: 500;
+//   li {
+//     padding: 5px 20px 5px 5px;
+//   }
+// `;
+//
+// const ListItem = styled("li")`
+//   list-style: none;
+//   //margin-bottom: 0.8em;
+// `;
+
