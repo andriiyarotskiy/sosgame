@@ -45,6 +45,9 @@ const TextContent = styled.div`
       background: #fff;
       position: absolute;
       border-radius: 4px;
+      @media (max-width: 568px) {
+        width: 90%;
+      }
     }
   }
 `
