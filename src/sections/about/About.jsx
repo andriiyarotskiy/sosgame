@@ -19,8 +19,9 @@ const Text = styled.div`
 `
 
 const TextContent = styled.div`
-  padding: 50px 0 100px;
+  //margin: 50px 0 100px;
   //width: 100%;
+  
 
   h3 {
     font-weight: 500;
