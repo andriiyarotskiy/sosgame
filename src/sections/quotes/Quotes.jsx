@@ -80,6 +80,7 @@ const Quotes = () => {
             </Item>
             <Item>
                 {Users.map(card => <Comment
+                    key={Math.random()}
                     name={card.name}
                     ava={card.ava}
                     comment={card.comment}

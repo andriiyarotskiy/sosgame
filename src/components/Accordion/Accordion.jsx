@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {IconContext} from 'react-icons';
-import {FiPlus, FiMinus} from "react-icons/fi";
+import {FiMinus, FiPlus} from "react-icons/fi";
 
 export const DataAccordion = [
     {
@@ -88,9 +87,10 @@ const Accordion = () => {
         <AccordionSection>
             <Container>
                 {DataAccordion.map((item, i) => {
+
                     return (
-                        <>
-                            <Wrap onClick={() => toggle(i)} key={i}>
+                        <span key={i}>
+                            <Wrap onClick={() => toggle(i)}>
                                 <h3>{item.title}</h3>
                                 <span>{(clicked === i)
                                     ? <FiMinus/>
@@ -103,7 +103,7 @@ const Accordion = () => {
                                     </Dropdown>
                                 ) : null
                             }
-                        </>
+                        </span>
                     )
                 })}
             </Container>
