@@ -10,6 +10,7 @@ import Slide from "./components/Slider/Slide";
 import Header from "./sections/header/Header";
 import Main from "./sections/header/Main";
 import NewsLetter from "./sections/newsletter/NewsLetter";
+import Features from "./sections/features/features";
 
 
 export const Container = styled.div`
@@ -23,19 +24,19 @@ const App = () => {
 
             <Slide>
                 <Container>
-                    {/*<Header/>*/}
+                    <Header/>
                     <Main/>
                 </Container>
             </Slide>
 
-            {/*<BackgroundSection background={about_bg_lg}>*/}
-            {/*    <Container>*/}
-            {/*        <About/>*/}
-            {/*    </Container>*/}
-            {/*</BackgroundSection>*/}
+            <BackgroundSection background={about_bg_lg}>
+                <Container>
+                    <About/>
+                </Container>
+            </BackgroundSection>
             <BackgroundSection background={features_bg_lg}>
                 <Container>
-
+                <Features />
                 </Container>
             </BackgroundSection>
             <BackgroundSection background={quotes_bg_lg}>
