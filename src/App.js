@@ -4,7 +4,7 @@ import About from "./sections/about/About";
 import BackgroundSection from "./components/BackgroundSection/BackgroundSection";
 import about_bg_lg from './assets/img/about-bg-lg.jpg';
 import features_bg_lg from './assets/img/features-bg-lg.jpg';
-import quotes_bg_lg from './assets/img/quotes-bg-lg.jpg';
+import quotes_bg_lg from './assets/img/quotes/quotes-bg-lg.jpg';
 import requirments_bg_lg from './assets/img/requirments-bg-lg.jpg';
 import Slide from "./components/Slider/Slide";
 import Header from "./sections/header/Header";
@@ -12,6 +12,7 @@ import Main from "./sections/header/Main";
 import NewsLetter from "./sections/newsletter/NewsLetter";
 import Features from "./sections/features/features";
 import Requirments from "./sections/requirments/Requirments";
+import Quotes from "./sections/quotes/Quotes";
 
 
 export const Container = styled.div`
@@ -42,11 +43,12 @@ const App = () => {
             </BackgroundSection>
             <BackgroundSection background={requirments_bg_lg}>
                 <Container>
-                    <Requirments />
+                    <Requirments/>
                 </Container>
             </BackgroundSection>
             <BackgroundSection background={quotes_bg_lg}>
                 <Container>
+                    <Quotes/>
                 </Container>
             </BackgroundSection>
             <NewsLetter>

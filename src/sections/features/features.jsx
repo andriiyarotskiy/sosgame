@@ -29,7 +29,7 @@ const Content = styled.div`
     letter-spacing: 3px;
     position: relative;
     padding-bottom: 70px;
-    padding-top: 15px;
+    padding-top: 10px;
 `
 
 const Features = () => {
