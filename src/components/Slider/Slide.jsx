@@ -27,7 +27,7 @@ const Slide = React.memo(({children}) => {
             navigation
             loop={true}
             allowTouchMove={false}
-            autoplay={{delay: 15000}}
+            autoplay={{delay: 10000}}
         >
             {slides}
         </Swiper>

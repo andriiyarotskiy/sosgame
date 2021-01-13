@@ -1,12 +1,7 @@
-import React, {useState, useCallback} from "react";
+import React, {useContext} from "react";
 import styled from "styled-components";
+import {Context, languagesData} from "../../App";
 
-
-// const Main = styled("div")`
-//   font-family: sans-serif;
-//   background: #f0f0f0;
-//   height: 100vh;
-// `;
 
 const DropDownContainer = styled("div")`
   width: 55px;
@@ -72,29 +67,28 @@ const ListItem = styled("li")`
 
 
 const CustomSelect = React.memo(() => {
-    const options = ["ENG", "RUS", "FRA", "DEU"];
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(options[0]);
+
+    const { lang,setLang,
+        isOpen,setIsOpen} = useContext(Context)
 
     const toggling = () => setIsOpen(!isOpen);
 
     const onOptionClicked = (value) => {
         return () => {
-            setSelectedOption(value);
+            setLang(value)
             setIsOpen(false);
-            console.log(selectedOption);
         }
     };
 
     return (
         <DropDownContainer>
             <DropDownHeader isOpen={isOpen} onClick={toggling}>
-                {selectedOption}
+                {lang}
             </DropDownHeader>
             {isOpen && (
                 <DropDownListContainer>
                     <DropDownList>
-                        {options.filter(o => o !== selectedOption).map(option => (
+                        {languagesData.filter(o => o !== lang).map(option => (
                             <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
                                 {option}
                             </ListItem>
@@ -107,64 +101,3 @@ const CustomSelect = React.memo(() => {
 })
 
 export default CustomSelect;
-
-//
-// const DropDownContainer = styled("div")`
-//   width: 55px;
-//   text-align: left;
-//   //margin: 0 auto;
-// `;
-//
-// const DropDownHeader = styled("div")`
-//   //margin-bottom: 0.8em;
-//   //padding: 0.4em 1em 0.4em 1em;
-//   font-weight: 500;
-//   //font-size: 1.3rem;
-//   background: transparent;
-//   position: relative;
-//   font-size: 12px;
-//
-//   :before, :after {
-//     content: '';
-//     width: 2px;
-//     height: 7px;
-//     top: 5px;
-//     right: 15px;
-//     background: white;
-//     position: absolute;
-//   }
-//
-//   :before {
-//     transform: ${(props) => props.isOpen ? `rotate(45deg)` : ` rotate(-45deg) `}
-//   }
-//
-//   :after {
-//     right: 11px;
-//     transform: ${(props) => props.isOpen ? `rotate(-45deg)` : ` rotate(45deg) `}
-//   }
-// `;
-//
-// const DropDownListContainer = styled("div")``;
-//
-// const DropDownList = styled("ul")`
-//   position: absolute;
-//   z-index: 20;
-//   margin: 10px;
-//   //padding-left: 1em;
-//   background: black;
-//   //border: 2px solid #e5e5e5;
-//   //box-sizing: border-box;
-//   //color: #3faffa;
-//   font-size: 12px;
-//   padding-left: 5px;
-//   font-weight: 500;
-//   li {
-//     padding: 5px 20px 5px 5px;
-//   }
-// `;
-//
-// const ListItem = styled("li")`
-//   list-style: none;
-//   //margin-bottom: 0.8em;
-// `;
-
