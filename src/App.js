@@ -16,8 +16,9 @@ import Quotes from "./sections/quotes/Quotes";
 
 
 export const Container = styled.div`
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 `
 
 export const Context = createContext()
@@ -37,10 +38,10 @@ const App = () => {
                 <Slide>
                     <Container>
                         <Header/>
-                        <Main/>
+                        {/*<Main/>*/}
                     </Container>
                 </Slide>
-
+{/*
                 <BackgroundSection background={about_bg_lg}>
                     <Container>
                         <About/>
@@ -61,11 +62,7 @@ const App = () => {
                         <Quotes/>
                     </Container>
                 </BackgroundSection>
-                <NewsLetter>
-                    <Container>
-
-                    </Container>
-                </NewsLetter>
+                <NewsLetter />*/}
 
             </Context.Provider>
         </>
