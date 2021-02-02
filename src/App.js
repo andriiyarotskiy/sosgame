@@ -13,6 +13,7 @@ import NewsLetter from "./sections/newsletter/NewsLetter";
 import Features from "./sections/features/features";
 import Requirments from "./sections/requirments/Requirments";
 import Quotes from "./sections/quotes/Quotes";
+import Menu from "./common/Menu/Menu";
 
 
 export const Container = styled.div`
@@ -24,45 +25,58 @@ export const Container = styled.div`
 export const Context = createContext()
 
 export const languagesData = ["ENG", "RUS", "FRA", "DEU"];
+
+
+const titles = [{value: "Main", href: '#'}, {value: "About", href: '#'},
+    {value: "Game Features", href: '#'}, {value: "System Requirments", href: '#'},
+    {value: "Quotes", href: '#'},
+]
+
+
 const App = () => {
     const [lang, setLang] = useState(languagesData[0])
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false); // Select Language
+    const [menuActive, setMenuActive] = useState(false) // Toggle Menu
+
+    // Local State
     const selectLanguege = {
         lang,setLang,
-        isOpen,setIsOpen
+        isOpen,setIsOpen,
+        menuActive,setMenuActive, titles
     }
+
 
     return (
         <>
             <Context.Provider value={selectLanguege}>
+                <Menu active={menuActive} setMenuActive={setMenuActive} />
                 <Slide>
                     <Container>
-                        <Header/>
-                        {/*<Main/>*/}
+                        <Main />
                     </Container>
                 </Slide>
-{/*
-                <BackgroundSection background={about_bg_lg}>
-                    <Container>
-                        <About/>
-                    </Container>
-                </BackgroundSection>
-                <BackgroundSection background={features_bg_lg}>
-                    <Container>
-                        <Features/>
-                    </Container>
-                </BackgroundSection>
-                <BackgroundSection background={requirments_bg_lg}>
-                    <Container>
-                        <Requirments/>
-                    </Container>
-                </BackgroundSection>
-                <BackgroundSection background={quotes_bg_lg}>
-                    <Container>
-                        <Quotes/>
-                    </Container>
-                </BackgroundSection>
-                <NewsLetter />*/}
+
+                {/*<BackgroundSection background={about_bg_lg}>*/}
+                {/*    <Container>*/}
+                {/*        <About/>*/}
+                {/*    </Container>*/}
+                {/*</BackgroundSection>*/}
+                {/*<BackgroundSection background={features_bg_lg}>*/}
+                {/*    <Container>*/}
+                {/*        <Features/>*/}
+                {/*    </Container>*/}
+                {/*</BackgroundSection>*/}
+                {/*<BackgroundSection background={requirments_bg_lg}>*/}
+                {/*    <Container>*/}
+                {/*        <Requirments/>*/}
+                {/*    </Container>*/}
+                {/*</BackgroundSection>*/}
+                {/*<BackgroundSection background={quotes_bg_lg}>*/}
+                {/*    <Container>*/}
+                {/*        <Quotes/>*/}
+                {/*    </Container>*/}
+                {/*</BackgroundSection>*/}
+                {/*<NewsLetter />*/}
 
             </Context.Provider>
         </>

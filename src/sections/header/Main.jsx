@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components'
 import {ButtonCustom} from "../../components/Buttons/Button";
+import Header from "./Header";
+import Menu from "../../common/Menu/Menu";
+import {Context} from "../../App";
+import {w} from '../../_variables'
 
 const MainContainer = styled.div`
   height: 90vh;
@@ -18,6 +22,10 @@ const Content = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
+  text-align: center;
+  @media (max-width: ${w.md}){
+    top: 30%;
+  }
 `
 const Title = styled.h1`
   font-family: Bebas Neue, cursive;
@@ -28,6 +36,9 @@ const Title = styled.h1`
   text-align: center;
   letter-spacing: 3px;
   text-transform: uppercase;
+  @media (max-width: ${w.md}){
+    font-size: 70px;
+  }
 `
 const SubTitle = styled.h2`
   font-family: Bebas Neue, cursive;
@@ -73,17 +84,21 @@ const ButtonSteam = styled(ButtonCustom)`
 `
 const Main = () => {
     return (
-        <MainContainer>
-            <Content>
-                <Title>
-                    SURVIVE AT ALL COSTS
-                </Title>
-                <SubTitle>
-                    Experience new social battle royale game
-                </SubTitle>
-                <ButtonSteam>Buy Now on Steam <span>14.99</span></ButtonSteam>
-            </Content>
-        </MainContainer>
+        <>
+            <Header />
+            <MainContainer>
+                <Content>
+                    <Title>
+                        SURVIVE AT ALL COSTS
+                    </Title>
+                    <SubTitle>
+                        Experience new social battle royale game
+                    </SubTitle>
+                    <ButtonSteam>Buy Now on Steam <span>14.99</span></ButtonSteam>
+                </Content>
+            </MainContainer>
+        </>
+
     );
 };
 

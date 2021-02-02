@@ -1,16 +1,49 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import header_logo from '../../assets/img/header/header_logo.png';
 import xbox_icon from '../../assets/img/header/xbox_icon.svg';
 import steam_icon from '../../assets/img/header/stea_icon.svg'
 import CustomSelect from "../../components/DropDown/CustomSelect";
 import {w} from '../../_variables'
+import Menu from "../../common/Menu/Menu";
+import {Context} from "../../App";
 
+const Header = () => {
+
+    const {menuActive, setMenuActive, titles} = useContext(Context)
+    return (
+        <Content>
+            <Logo>
+                <img src={header_logo} alt="header_logo"/>
+            </Logo>
+            <TopBar>
+                <nav>
+                    {titles.map(item => <li key={Math.random()}><a href={item.href}>{item.value}</a></li>)}
+                </nav>
+            </TopBar>
+            <HeaderIcons>
+                <SelectLang>
+                    <CustomSelect/>
+                </SelectLang>
+                <Border></Border>
+                <span>
+                        <img src={xbox_icon} alt="xbox_icon"/>
+                    </span>
+                <span>
+                        <img src={steam_icon} alt="steam_icon"/>
+                    </span>
+                <BurgerBtn onClick={() => setMenuActive(!menuActive)}>
+                    <CenterLine></CenterLine>
+                </BurgerBtn>
+
+            </HeaderIcons>
+        </Content>
+    );
+};
+
+export default Header;
 
 const Content = styled.div`
-  background: gray;
-
-  //height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,57 +97,49 @@ const HeaderIcons = styled.div`
     }
   }
 `
-const SelectLang = styled.div`
-`
-const Toggle = styled.div`
-  margin-left: 20px;
+const SelectLang = styled.div``
+export const CenterLine = styled.div``
+const BurgerBtn = styled.div`
+
+  @media (min-width: ${w.lg}) {
+    display: none;
+  }
+
   width: 25px;
-  height: 2px;
-  border-radius: 3px;
-  background: #fff;
+  height: 20px;
+  margin-left: 20px;
   position: relative;
-  :before{
+  cursor: pointer;
+
+  :before {
     content: '';
     position: absolute;
-    height: 2px;
+    top: 0;
+    width: 25px;
+    background-color: white;
+    height: 3px;
+    border-radius: 3px;
   }
-  :after{
-    
+
+  ${CenterLine} {
+    position: absolute;
+    top: 9px;
+    width: 25px;
+    background-color: white;
+    height: 3px;
+    margin: 0;
+    border-radius: 3px;
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 17px;
+    background-color: white;
+    height: 3px;
+    border-radius: 3px;
   }
 `
 
-const Header = () => {
-    return (
-        <Content>
-            <Logo>
-                <img src={header_logo} alt="header_logo"/>
-            </Logo>
-            <TopBar>
-                <nav>
-                    <li><a href="#">Main</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Game Features</a></li>
-                    <li><a href="#">System Requirments</a></li>
-                    <li><a href="#">Quotes</a></li>
-                </nav>
-            </TopBar>
-            <HeaderIcons>
-                <SelectLang>
-                    <CustomSelect/>
-                </SelectLang>
-                <Border></Border>
-                <span>
-                        <img src={xbox_icon} alt="xbox_icon"/>
-                    </span>
-                <span>
-                        <img src={steam_icon} alt="steam_icon"/>
-                    </span>
-                <Toggle>
-
-                </Toggle>
-            </HeaderIcons>
-        </Content>
-    );
-};
-
-export default Header;

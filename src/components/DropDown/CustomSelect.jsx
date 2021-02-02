@@ -62,7 +62,6 @@ const DropDownList = styled("ul")`
 
 const ListItem = styled("li")`
   list-style: none;
-  //margin-bottom: 0.8em;
 `;
 
 
@@ -70,6 +69,8 @@ const CustomSelect = React.memo(() => {
 
     const { lang,setLang,
         isOpen,setIsOpen} = useContext(Context)
+
+    console.log(lang)
 
     const toggling = () => setIsOpen(!isOpen);
 
@@ -88,7 +89,7 @@ const CustomSelect = React.memo(() => {
             {isOpen && (
                 <DropDownListContainer>
                     <DropDownList>
-                        {languagesData.filter(o => o !== lang).map(option => (
+                        {["ENG", "RUS", "FRA", "DEU"].filter(o => o !== lang).map(option => (
                             <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
                                 {option}
                             </ListItem>
