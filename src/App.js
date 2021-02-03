@@ -49,18 +49,18 @@ const App = () => {
     return (
         <>
             <Context.Provider value={selectLanguege}>
-                <Menu active={menuActive} setMenuActive={setMenuActive} />
+       {/*         <Menu active={menuActive} setMenuActive={setMenuActive} />
                 <Slide>
                     <Container>
                         <Main />
                     </Container>
-                </Slide>
+                </Slide>*/}
 
-                {/*<BackgroundSection background={about_bg_lg}>*/}
-                {/*    <Container>*/}
-                {/*        <About/>*/}
-                {/*    </Container>*/}
-                {/*</BackgroundSection>*/}
+                <BackgroundSection background={about_bg_lg}>
+                    <Container>
+                        <About/>
+                    </Container>
+                </BackgroundSection>
                 {/*<BackgroundSection background={features_bg_lg}>*/}
                 {/*    <Container>*/}
                 {/*        <Features/>*/}
