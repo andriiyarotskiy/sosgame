@@ -56,16 +56,16 @@ const App = () => {
                     </Container>
                 </Slide>*/}
 
-                <BackgroundSection background={about_bg_lg}>
+             {/*   <BackgroundSection background={about_bg_lg}>
                     <Container>
                         <About/>
                     </Container>
+                </BackgroundSection>*/}
+                <BackgroundSection background={features_bg_lg}>
+                    <Container>
+                        <Features/>
+                    </Container>
                 </BackgroundSection>
-                {/*<BackgroundSection background={features_bg_lg}>*/}
-                {/*    <Container>*/}
-                {/*        <Features/>*/}
-                {/*    </Container>*/}
-                {/*</BackgroundSection>*/}
                 {/*<BackgroundSection background={requirments_bg_lg}>*/}
                 {/*    <Container>*/}
                 {/*        <Requirments/>*/}

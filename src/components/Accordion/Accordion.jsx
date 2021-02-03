@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {FiMinus, FiPlus} from "react-icons/fi";
+import {w} from '../../_variables'
 
 export const DataAccordion = [
     {
@@ -32,6 +33,9 @@ const Container = styled.div`
   max-width: 360px;
   min-height: 300px;
   padding-left: 45px;
+  @media (max-width: ${w.md}){
+    padding: 0;
+  }
   //box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
 `
 const Wrap = styled.div`
@@ -44,6 +48,9 @@ const Wrap = styled.div`
   text-align: center;
   cursor: pointer;
   padding: 20px 0;
+  @media (max-width: ${w.md}){
+    text-align: left;
+  }
 
   h3 {
     color: #FFB548;
